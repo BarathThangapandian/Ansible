@@ -1,0 +1,10 @@
+--- # remove httpd service
+- hosts: webservers
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+    - name: remove httpd service
+      action: yum name=httpd state=absent
+    - name: remove tree software
+      action: yum name=tree state=absent

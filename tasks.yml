@@ -1,0 +1,12 @@
+---
+- hosts: webservers
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+    - name: Install httpd application
+      action: yum name=htt state=present
+      ignore_errors: yes
+    - name: Installing tree application
+      action: yum name=tree state=present
+

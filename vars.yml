@@ -1,0 +1,12 @@
+--- #my variable play book
+- hosts: webservers
+  user: ansible
+  become: yes
+  connection: ssh
+  vars:
+    pkgname: httpd
+  tasks:
+    - name: install httpd application
+      action: yum name='{{pkgname}}' state=present
+    - name: start the httpd service
+      action: service name='{{pkgname}}' state=started

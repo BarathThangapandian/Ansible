@@ -1,0 +1,6 @@
+- name: installing httpd application
+  yum: pkg=httpd state=installed
+- name: installing mysql application
+  action: yum name=mysql state=present
+- name: installing tree application
+  yum: name=tree state=installed

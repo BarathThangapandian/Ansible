@@ -1,0 +1,15 @@
+---
+- hosts: webservers
+  user: ansible
+  become: true
+  connection: ssh
+  tasks:
+    - name: Instaling multiple sw
+      yum: name='{{item}}' state=present
+      with_items:
+        - httpd
+        - mysql
+        - docker
+        - java
+        - git
+        - tree

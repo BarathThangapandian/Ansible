@@ -1,0 +1,14 @@
+---
+- hosts: webservers
+  user: ansible
+  become: true
+  connection: ssh
+  tasks:
+    - name: Create multiple users
+      action: user name='{{item}}' state=absent
+      with_items:
+        - Mani
+        - Manikandavel
+        - Vasu
+        - Nagarajan
+        - Jonjem

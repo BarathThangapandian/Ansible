@@ -1,0 +1,17 @@
+---
+- hosts: webservers
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+    - name: create a file in host machine with touch
+      file: path=/tmp/tester.txt state=touch   #here the idemptny will not work due to touch cmnd
+
+    - name: create a file in host machine
+      file: path=/tmp/tester.txt state=file
+
+    - name: create a directory in hosts
+      file: path=/tmp/bardir state=directory
+
+    - name: Copy a file from server to hosts
+      copy: src=./os.yaml dest=/tmp

@@ -1,0 +1,8 @@
+---
+- hosts: webservers 
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+    - name: update the os
+      action: yum state=latest

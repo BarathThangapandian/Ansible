@@ -1,0 +1,15 @@
+---
+- hosts: webservers
+  user: ansible
+  become: true
+  connection: ssh
+  tasks:
+    - name: Removing all packages
+      yum: name='{{item}}' state=removed
+      with_items:
+        - httpd
+        - mysql
+        - git
+        - docker
+        - java
+        - tree

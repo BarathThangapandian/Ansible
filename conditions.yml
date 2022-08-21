@@ -1,0 +1,12 @@
+--- #using linux "command" which is not an idempotency
+- hosts: webservers
+  user: ansible
+  become: true
+  connection: ssh
+  tasks:
+    - name: Installing apache package for RedHat
+      command: yum remove httpd -y
+      when: ansible_os_family == 'RedHat'
+    - name: Installing apache package for Debian
+      command: apt remove apache2 -y
+      when: ansible_os_family == 'Debian'
