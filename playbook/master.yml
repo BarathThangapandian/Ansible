@@ -1,8 +1,0 @@
---- #createing something
-- hosts: webservers
-  user: ansible
-  become: true
-  connection: ssh
-  roles:
-    - testfolder
-      - tasks
