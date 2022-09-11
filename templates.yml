@@ -1,0 +1,23 @@
+---
+- name: 'Making template work'
+  hosts: app
+  become: yes
+  connection: ssh
+  vars:
+    webserver_msg: 'This is the message from app side'
+  tasks:
+    - name: install httpd service
+      yum:
+        name: httpd
+        state: installed
+
+    - name: start service
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+
+    - name: copy the template
+      template:
+        src: /home/ansadmin/jinja.j2
+        dest: /var/www/html/index.html

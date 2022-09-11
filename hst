@@ -1,0 +1,15 @@
+[app]
+target1 ansible_ssh_host=172.31.83.114
+target2 ansible_ssh_host=172.31.87.11
+
+[webserver]
+target1
+
+[backupserver]
+target2 backup_file=/tmp/test1
+
+[all:vars]
+temp_file=/tmp/test2
+
+#[webserver:vars]
+#temp_file=/tmp/test3

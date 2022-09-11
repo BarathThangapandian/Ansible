@@ -1,0 +1,24 @@
+---
+- hosts: app
+  become: yes
+  vars:
+    dictonary:
+      aws_sites:
+        author: barath
+        author_id: 001
+      ms_sites:
+        author: raj
+        author_id: 002
+      mac_sites:
+        author: rai
+        author_id: 003
+      lev_sitest:
+        author: mac
+        author_id: 001
+  tasks:
+    - name: print datat
+      debug:
+        msg: "Here is the message for: {{ item.value.author }}"
+      with_dict: '{{dictonary}}'
+      when: 'item.value.author == "barath"'
+      

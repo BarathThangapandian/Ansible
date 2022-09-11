@@ -1,0 +1,21 @@
+---
+- hosts: all:vars
+  become: true
+  tasks:
+    - name: Testting the Variable method
+      file:
+        dest: '{{temp_file}}'
+        state: '{{file_state}}'
+      when: temp_file is defined
+...
+#---
+#- hosts: backupserver
+#  become: true
+#  tasks:
+#    - name: backupserver
+#      file:
+#        dest: '{{backup_server}}'
+#        state: '{{file_state}}'
+#        when: backup_server is defined
+
+

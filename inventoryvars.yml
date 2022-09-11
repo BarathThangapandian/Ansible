@@ -1,0 +1,12 @@
+---
+- hosts: webserver
+  connection: ssh
+  user: ansadmin
+  become: yes
+  tasks:
+    - name: Backup file
+      file:
+        dest: '{{temp_file}}'
+        state: '{{state_file}}'
+      when: temp_file is defined
+

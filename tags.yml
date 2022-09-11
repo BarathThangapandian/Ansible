@@ -1,0 +1,24 @@
+---
+- hosts: all
+  become: true
+  user: ansadmin
+  tasks: 
+    - name: Install httpd service
+      yum:
+        name: httpd
+        state: installed
+      tags: http
+    - name: Install ntpd service
+      yum:
+        name: ntp
+        state: present
+      tags: ntpd
+    - name: Start ntp service
+      service:
+        name: ntpd
+        state: started
+        enabled: yes
+      tags: ntp
+
+
+      ##ansible-playbook --tags http tags.yml     

@@ -1,0 +1,11 @@
+---
+- hosts: app
+  become: yes
+  vars:
+    packages: [git,vim,ruby]
+  tasks:
+    - name: install different packages
+      yum:
+        name: '{{ item }}' 
+        state: latest
+      with_items: '{{ packages }}'

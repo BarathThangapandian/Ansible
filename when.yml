@@ -1,0 +1,12 @@
+---
+- hosts: app
+  become: yes
+  user: ansadmin
+  connection: ssh
+  tasks:
+    - name: update all redhat packages
+      yum: name=* state=latest
+      when: ansible_os_family == "RedHat"
+    - name: update all debeian family
+      apt: upgrade=dist update_cache=yes
+      when: ansible_os_family == "Debian"
