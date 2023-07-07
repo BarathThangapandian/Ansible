@@ -1,0 +1,8 @@
+---
+- name: ping them all
+  hosts: _client
+  vars:
+    ansible_ssh_private_key_file: "/home/ubuntu/tesrt.pem"
+  tasks:
+    - name: pinging
+      ping:
